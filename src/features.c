@@ -11,7 +11,8 @@
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
 
-void helloWorld() {
+void helloWorld() 
+{
     printf("Hello World !");
 }
 
