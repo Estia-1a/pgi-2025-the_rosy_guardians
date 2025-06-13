@@ -5,12 +5,13 @@
 
 #include "utils.h"
 
-pixelRGB * getPixel() {
-    if (x>width || y>height || data=NULL) {
+pixelRGB * get_pixel( unsigned char* data, const unsigned int width, const unsigned int height, const unsigned int n, const unsigned int x, const unsigned int y ) {
+    if (x>width || y>height || data==NULL) {
         printf("NULL");
+        return (NULL);
     }
     else {
-        return (pixelRGB *) &data[y*width*n+x] ;
+        return (pixelRGB *) &data[y*(width)*n+((x)*n)] ;
 
     }
 
@@ -21,7 +22,6 @@ pixelRGB * getPixel() {
 
 
 
-void setPixel()
- * 
- */
+void setPixel();
+
 

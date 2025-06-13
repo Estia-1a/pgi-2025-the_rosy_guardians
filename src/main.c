@@ -58,12 +58,14 @@ if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
 
 // COULEUR DU PREMIER PIXEL DEUXIEME LIGNE
 if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
-  /* first_pixel() function is defined in feature.h and implemented in feature.c */
+  /* second_line() function is defined in feature.h and implemented in feature.c */
   second_line(configuration.filenames[0] );
 }
-  /*
-   * TO COMPLETE
-   */
-  
-  return 0;
+
+// COULEUR DU PIXEL CHOISI EN COORDONEES X ET Y
+if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
+  /* print_pixel() function is defined in feature.h and implemented in feature.c */
+  print_pixel(configuration.filenames[0] , atoi(configuration.arguments[0]), atoi(configuration.arguments[1]));
+}
+
 }

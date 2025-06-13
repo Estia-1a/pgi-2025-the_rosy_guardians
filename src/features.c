@@ -68,16 +68,17 @@ void second_line (char *source_path) {
     }
 }
 
-/*void print_pixel () {
+void print_pixel (char *source_path, const unsigned int x, const unsigned int y) {
     int width, height, channel_count;
     unsigned char *data;
     int result=read_image_data(source_path, &data, &width, &height, &channel_count);
     if (result==1) {
-        printf("%s%d%s%d%s%d", "print pixel: (", x, ", ", y, "): ",  print_pixel);
+        pixelRGB * pixel = get_pixel(data, width, height, channel_count, x, y);
+        printf("%s%d%s%d%s%d%s%d%s%d", "print pixel (", x, ", ", y, "): ", pixel->R, ", ", pixel->G, ", ", pixel->B);
     }
     else {
         printf("Erreur, aucune image trouvée ");
     }
 
 }
-    */
+    
