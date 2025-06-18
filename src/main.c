@@ -65,7 +65,7 @@ if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
 // Print the pixel with the maximum R, G, or B value
 if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
   /* first_pixel() function is defined in feature.h and implemented in feature.c */
-  second_line(configuration.filenames[0] );
+  max_component(configuration.filenames[0],configuration.arguments[0][0] );
 }
   /*
    * TO COMPLETE

@@ -61,58 +61,7 @@ void second_line (char *source_path){
 
 }
 
-void dimension (char *source_path) {
-    int width, height, channel_count;
-    unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("%s%d%s%d", "dimension: ", width, ", " , height);
-    }
-    else {
-        printf("Erreur, aucune image trouvée ");
-    }
 
-}
-
-void first_pixel (char *source_path) {
-    int width, height, channel_count;
-    unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("first pixel: %d %d %d ", data[0],  data[1],  data[2]);
-    }
-    else {
-        printf("Erreur, aucune image trouvée ");
-    }
-
-    
-}
-
-void tenth_pixel (char *source_path) {
-    int width, height, channel_count;
-    unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("%s%d%s%d%s%d", "tenth pixel: ", data[27], ", ", data[28], ", ",  data[29]);
-    }
-    else {
-        printf("Erreur, aucune image trouvée ");
-    }
-
-    
-}
-
-void second_line (char *source_path) {
-    int width, height, channel_count;
-    unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("%s%d%s%d%s%d", "second line: ", data[width*3], ", ", data[width*3+1], ", ",  data[width*3+2]);
-    }
-    else {
-        printf("Erreur, aucune image trouvée ");
-    }
-}
 
 /*void print_pixel () {
     int width, height, channel_count;
@@ -128,18 +77,40 @@ void second_line (char *source_path) {
 }
     */
 
-void max_component (char *source_path) {
-    int width, height, channel_count, size;
+void max_component (char *source_path, char c) {
+	
+    int M, x, y, start;
+    M = 0;
+    int width, height, channel_count; 
     unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-
-    size = 
-
+    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
     if (result==1) {
-        printf("%s%d%s%d%s%d", "second line: ", data[width*3], ", ", data[width*3+1], ", ",  data[width*3+2]);
-    }
+
+        if (c == 'R'){
+            start = 0;}
+        else if (c== 'G'){
+            start = 1;}
+        else if (c == 'B'){
+            start = 2;}
+        else {
+        printf("error");
+    } 
+            
+        for (int i=0 ; i < height ; i++){
+            for (int j=0; j < (width); j ++){
+                
+                if (M < data[i*channel_count*width+j*channel_count+start]){
+                M = data[i*channel_count*width+j*channel_count+start];
+                x = j;
+                y = i;
+                }	
+            }		
+        }
+        printf ("(%i, %i) : %i",x,y,M);
+        }
     else {
-        printf("Erreur, aucune image trouvée ");
-    }
+        printf("error");
+    } 
 }
+
 
