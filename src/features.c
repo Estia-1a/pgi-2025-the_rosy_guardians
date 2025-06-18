@@ -69,16 +69,15 @@ void second_line (char *source_path) {
     }
 }
 
-/*void print_pixel () {
-    int width, height, channel_count;
+void max_pixel(char *source_path) {
+    int width, height,channel_count;
     unsigned char *data;
     int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("%s%d%s%d%s%d", "print pixel: (", x, ", ", y, "): ",  print_pixel);
+    if (result != 1){
+        printf("Erreur,aucune image trouvée\n");
+        return 0;
     }
-    else {
-        printf("Erreur, aucune image trouvée ");
-    }
-
+    
 }
-    */
+
+
