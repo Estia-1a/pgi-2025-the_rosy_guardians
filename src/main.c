@@ -80,13 +80,15 @@ if ( strncmp( configuration.command, "color_red", 9) == 0 ) {
   /* color_blue() function is defined in feature.h and implemented in feature.c */
   color_red(configuration.filenames[0] );
 }
-
-
-
 // Print the pixel with the maximum R, G, or B value
 if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
   /* first_pixel() function is defined in feature.h and implemented in feature.c */
   max_component(configuration.filenames[0],configuration.arguments[0][0] );
+}
+// Print the pixel with the minimum R, G, or B value
+if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+  /* first_pixel() function is defined in feature.h and implemented in feature.c */
+ // min_component(configuration.filenames[0],configuration.arguments[0][0] );
 }
   /*
    * TO COMPLETE
