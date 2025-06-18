@@ -77,6 +77,46 @@ void print_pixel (char *source_path, const unsigned int x, const unsigned int y)
 
 }
 
+void color_red (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    int i=0;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    while (i<width*height*channel_count) {
+        data[i+1]=0;
+        data[i+2]=0;
+        i+=channel_count;
+    }
+    
+    write_image_data("image_out.bmp", data, width, height); 
+
+    if (write_image_data("image_out.bmp", data, width, height) !=0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image rouge.\n");
+    }
+
+}
+
+void invert_color (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    int i=0;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    while (i<width*height*channel_count) {
+        data[i]=255-data[i];
+        i+=1;
+    }
+    
+    write_image_data("image_inverted.bmp", data, width, height); 
+
+    if (write_image_data("image_inverted.bmp", data, width, height) !=0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image inversée.\n");
+    }
+
+}
 
 
 void color_blue (char *source_path){
