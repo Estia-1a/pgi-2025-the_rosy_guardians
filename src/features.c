@@ -127,3 +127,19 @@ void second_line (char *source_path) {
 
 }
     */
+
+void max_component (char *source_path) {
+    int width, height, channel_count, size;
+    unsigned char *data;
+    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    size = 
+
+    if (result==1) {
+        printf("%s%d%s%d%s%d", "second line: ", data[width*3], ", ", data[width*3+1], ", ",  data[width*3+2]);
+    }
+    else {
+        printf("Erreur, aucune image trouvée ");
+    }
+}
+
