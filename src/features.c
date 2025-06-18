@@ -153,22 +153,7 @@ void color_green (char *source_path){
 
    }
  
- void color_red (char *source_path){
-    int width, height, channel_count;
-    unsigned char *data;
-    read_image_data(source_path, &data, &width, &height, &channel_count);
 
-    int x,y;
-    for(y=0;y<height;y++){
-        for(x=0;x<width;x++){
-            data[y * width * 3 + x * 3+1]=0;
-            data[y * width * 3 + x * 3+2]=0;
-        }
-    }
-
-    write_image_data("image_out.bmp", data, width, height);
-
-   }
 
 void max_component (char *source_path, char c) {
 	
@@ -206,7 +191,7 @@ void max_component (char *source_path, char c) {
     } 
 }
 
-void mix_component (char *source_path, char c) {
+void min_component (char *source_path, char c) {
 	
     int M, x, y, start;
     M = 0;
