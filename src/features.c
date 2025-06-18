@@ -82,4 +82,21 @@ void print_pixel (char *source_path, const unsigned int x, const unsigned int y)
     }
 
 }
-    
+
+void color_blue (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int x,y;
+    for(y=0;y<height;y++){
+        for(x=0;x<width;x++){
+            data[y * width * 3 + x * 3]=0;
+            data[y * width * 3 + x * 3+1]=0;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+
+   }
+ 
