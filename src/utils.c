@@ -1,20 +1,27 @@
 #include <estia-image.h>
 #include <stddef.h>
-#include "utils.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-/**
- * @brief Here, you have to define functions of the pixel struct : getPixel and setPixel.
+#include "utils.h"
+
+pixelRGB * getPixel() {
+    if (x>width || y>height || data=NULL) {
+        printf("NULL");
+    }
+    else {
+        return (pixelRGB *) &data[y*width*n+x] ;
+
+    }
+
+}
+
+
+
+
+
+
+void setPixel()
  * 
  */
 
-pixelRGB * getPixel(unsigned char* data, const unsigned int width, const unsigned int height, const unsigned int n, const unsigned int x, const unsigned int y) {
-
-    if (x>width || y>height || data == NULL){
-        printf("NULL");
-    } 
-    
-    else {
-        return (pixelRGB *) &data [y*width*n+x*n];
-    }
-}
