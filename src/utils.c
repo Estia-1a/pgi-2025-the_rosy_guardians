@@ -12,7 +12,7 @@ pixelRGB * get_pixel( unsigned char* data, const unsigned int width, const unsig
     }
     else {
         return (pixelRGB *) &data[y*(width)*n+((x)*n)] ;
- 
+
     }
  
 }

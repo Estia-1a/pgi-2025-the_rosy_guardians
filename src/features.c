@@ -11,8 +11,9 @@
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
 
-void helloWorld() {
-    printf("Man I'm sorry!!!!!");
+void helloWorld() 
+{
+    printf("Hello World !");
 }
 void dimension (char *source_path) {
     int width, height, channel_count; 
@@ -28,24 +29,27 @@ void dimension (char *source_path) {
 void first_pixel (char *source_path){
     int width, height, channel_count; 
     unsigned char *data;
-    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
-        if (result==1) {
-        printf("first_pixel : %d, %d, %d",data[0],data[1],data[2]);
-    } else {
-        printf("error");
-    }     
+    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (result==1) {
+        printf("first_pixel: %d%s%d%s%d ", data[0], ", ",  data[1], ", ", data[2]);
+    }
+    else {
+        printf("Erreur, aucune image trouvée ");
+    }
+
+    
 }
 
 void tenth_pixel (char *source_path){
     int width, height, channel_count; 
     unsigned char *data;
-    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
-        if (result==1) {
-        printf("first_pixel : %d, %d, %d",data[27],data[28],data[29]);
-    } else {
-        printf("error");
-    } 
-}    
+    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
+    if (result==1) {
+        printf("%s%d%s%d%s%d", "tenth_pixel: ", data[27], ", ", data[28], ", ",  data[29]);
+    }
+    else {
+        printf("Erreur, aucune image trouvée ");
+    }
 
 void second_line (char *source_path){
     int width, height, channel_count; 
@@ -62,20 +66,56 @@ void second_line (char *source_path){
 }
 
 
-
-/*void print_pixel () {
+void color_blue (char *source_path){
     int width, height, channel_count;
     unsigned char *data;
-    int result=read_image_data(source_path, &data, &width, &height, &channel_count);
-    if (result==1) {
-        printf("%s%d%s%d%s%d", "print pixel: (", x, ", ", y, "): ",  print_pixel);
-    }
-    else {
-        printf("Erreur, aucune image trouvée ");
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int x,y;
+    for(y=0;y<height;y++){
+        for(x=0;x<width;x++){
+            data[y * width * 3 + x * 3]=0;
+            data[y * width * 3 + x * 3+1]=0;
+        }
     }
 
-}
-    */
+    write_image_data("image_out.bmp", data, width, height);
+
+   }
+
+void color_green (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int x,y;
+    for(y=0;y<height;y++){
+        for(x=0;x<width;x++){
+            data[y * width * 3 + x * 3]=0;
+            data[y * width * 3 + x * 3+2]=0;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+
+   }
+ 
+ void color_red (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    int x,y;
+    for(y=0;y<height;y++){
+        for(x=0;x<width;x++){
+            data[y * width * 3 + x * 3+1]=0;
+            data[y * width * 3 + x * 3+2]=0;
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);
+
+   }
 
 void max_component (char *source_path, char c) {
 	
