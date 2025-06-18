@@ -68,4 +68,15 @@ if ( strncmp( configuration.command, "print_pixel", 11 ) == 0 ) {
   print_pixel(configuration.filenames[0] , atoi(configuration.arguments[0]), atoi(configuration.arguments[1]));
 }
 
+// IMAGE DU CANAL ROUGE SEUL
+if ( strncmp( configuration.command, "color_red", 9 ) == 0 ) {
+  /* color_red() function is defined in feature.h and implemented in feature.c */
+  color_red(configuration.filenames[0]);
+}
+
+// IMAGE DU CANAL ROUGE SEUL
+if ( strncmp( configuration.command, "invert_color", 12 ) == 0 ) {
+  /* color_red() function is defined in feature.h and implemented in feature.c */
+  invert_color(configuration.filenames[0]);
+}
 }
