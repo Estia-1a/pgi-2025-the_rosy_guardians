@@ -225,3 +225,26 @@ void min_component (char *source_path, char c) {
         printf("error");
     } 
 }
+
+
+void color_grey (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    int i=0;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    while (i<width*height*channel_count) {
+        data[i]=(data[i]+data[i+1]+data[i+2])/3;
+        data[i+1]=data[i];
+        data[i+2]=data[i];
+        i+=channel_count;
+    }
+    
+    write_image_data("image_greyscale.bmp", data, width, height); 
+
+    if (write_image_data("image_greyscale.bmp", data, width, height) ==0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image en greyscale.\n");
+    }
+
+}
