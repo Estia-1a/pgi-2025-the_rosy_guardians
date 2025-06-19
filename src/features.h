@@ -13,6 +13,7 @@ void color_green (char *source_path);
 void max_component (char *source_path, char c);
 void min_component (char *source_path, char c);
 void color_red (char *source_path);
+void color_grey (char *source_path);
 void invert_color (char *source_path);
 
 #endif
