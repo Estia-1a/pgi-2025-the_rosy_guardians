@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
   /* Example with helloworld command
    * If helloworld is a called command: freud.exe -f images/input/image.jpeg -c helloworld 
    */
-  if ( strncmp( configuration.command, "helloworld", 10 ) == 0 ) {
+if ( strncmp( configuration.command, "helloworld", 10 ) == 0 ) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     helloWorld();
   }
@@ -85,4 +85,19 @@ if ( strncmp( configuration.command, "invert_color", 12 ) == 0 ) {
   /* color_red() function is defined in feature.h and implemented in feature.c */
   invert_color(configuration.filenames[0]);
 }
+// Print the pixel with the maximum R, G, or B value
+if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+  /* first_pixel() function is defined in feature.h and implemented in feature.c */
+  max_component(configuration.filenames[0],configuration.arguments[0][0] );
+}
+// Print the pixel with the minimum R, G, or B value
+if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+  /* first_pixel() function is defined in feature.h and implemented in feature.c */
+  min_component(configuration.filenames[0],configuration.arguments[0][0] );
+}
+  /*
+   * TO COMPLETE
+   */
+  
+  return 0;
 }

@@ -14,14 +14,6 @@ pixelRGB * get_pixel( unsigned char* data, const unsigned int width, const unsig
         return (pixelRGB *) &data[y*(width)*n+((x)*n)] ;
 
     }
-
+ 
 }
-
-
-
-
-
-
-void setPixel();
-
 
