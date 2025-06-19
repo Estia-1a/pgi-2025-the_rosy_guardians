@@ -227,7 +227,7 @@ void min_component (char *source_path, char c) {
 }
 
 
-void color_grey (char *source_path){
+void color_gray (char *source_path){
     int width, height, channel_count;
     unsigned char *data;
     int i=0;
@@ -241,12 +241,64 @@ void color_grey (char *source_path){
         i+=channel_count;
     }
     
-    write_image_data("image_greyscale.bmp", data, width, height); 
+    write_image_data("image_grayscale.bmp", data, width, height); 
 
     if (write_image_data("image_greyscale.bmp", data, width, height) ==0) {
         fprintf(stderr, "Erreur : Impossible d'écrire l'image en greyscale.\n");
     }
+}
+void color_gray_luminance (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    int i=0;
 
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    while (i<width*height*channel_count) {
+        data[i]=(0.21*data[i]+0.72*data[i+1]+0.07*data[i+2]);
+        data[i+1]=data[i];
+        data[i+2]=data[i];
+        i+=channel_count;
+    }
+    
+    write_image_data("image_grayscale_luminance.bmp", data, width, height); 
+
+    if (write_image_data("image_grayscale_luminance.bmp", data, width, height) ==0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image en grayscale luminance.\n");
+    }
+}
+
+void max_pixel (char *source_path) {
+	
+    int Max, x, y,somme;
+    somme = 0;
+    Max = 0;
+    int R = 0;
+    int G = 0;
+    int B = 0;
+    int width, height, channel_count; 
+    unsigned char *data;
+    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
+    if (result==1) {
+        
+        for (int i=0 ; i < height ; i++){
+            for (int j=0; j < (width); j ++){
+                somme = data[i*channel_count*width+j*channel_count] + data[i*channel_count*width+j*channel_count+1] + data[i*channel_count*width+j*channel_count+2];
+                if (Max < somme){
+                Max = somme;
+                R = data[i*channel_count*width+j*channel_count];
+                G = data[i*channel_count*width+j*channel_count+1];
+                B = data[i*channel_count*width+j*channel_count+2];
+                x = j;
+                y = i;
+                }	
+            }		
+        }
+        printf("max_pixel (%d, %d): %d, %d, %d", x, y, R, G, B);
+        }
+    else {
+        printf("error");
+    } 
 }
 
 void max_pixel (char *source_path) {
