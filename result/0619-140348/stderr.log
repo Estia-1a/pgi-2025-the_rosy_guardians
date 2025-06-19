@@ -1,0 +1,17 @@
+/home/runner/work/pgi-2025-the_rosy_guardians/pgi-2025-the_rosy_guardians/src/features.c:304:6: error: redefinition of ‘max_pixel’
+  304 | void max_pixel (char *source_path) {
+      |      ^~~~~~~~~
+/home/runner/work/pgi-2025-the_rosy_guardians/pgi-2025-the_rosy_guardians/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_rosy_guardians/pgi-2025-the_rosy_guardians/src/main.c:115:1: error: expected declaration or statement at end of input
+  115 | }
+      | ^
+/home/runner/work/pgi-2025-the_rosy_guardians/pgi-2025-the_rosy_guardians/src/features.c:271:6: note: previous definition of ‘max_pixel’ with type ‘void(char *)’
+  271 | void max_pixel (char *source_path) {
+      |      ^~~~~~~~~
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
