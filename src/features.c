@@ -191,7 +191,7 @@ void max_component (char *source_path, char c) {
     } 
 }
 
-void color_grey (char *source_path){
+void color_gray (char *source_path){
     int width, height, channel_count;
     unsigned char *data;
     int i=0;
@@ -205,10 +205,31 @@ void color_grey (char *source_path){
         i+=channel_count;
     }
     
-    write_image_data("image_greyscale.bmp", data, width, height); 
+    write_image_data("image_grayscale.bmp", data, width, height); 
 
-    if (write_image_data("image_greyscale.bmp", data, width, height) ==0) {
-        fprintf(stderr, "Erreur : Impossible d'écrire l'image en greyscale.\n");
+    if (write_image_data("image_grayscale.bmp", data, width, height) ==0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image en grayscale.\n");
     }
 
+}
+
+void color_gray_luminance (char *source_path){
+    int width, height, channel_count;
+    unsigned char *data;
+    int i=0;
+
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+
+    while (i<width*height*channel_count) {
+        data[i]=(0.21*data[i]+0.72*data[i+1]+0.07*data[i+2]);
+        data[i+1]=data[i];
+        data[i+2]=data[i];
+        i+=channel_count;
+    }
+    
+    write_image_data("image_grayscale_luminance.bmp", data, width, height); 
+
+    if (write_image_data("image_grayscale_luminance.bmp", data, width, height) ==0) {
+        fprintf(stderr, "Erreur : Impossible d'écrire l'image en grayscale luminance.\n");
+    }
 }

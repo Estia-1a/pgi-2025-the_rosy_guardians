@@ -91,15 +91,16 @@ if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
   /* first_pixel() function is defined in feature.h and implemented in feature.c */
   max_component(configuration.filenames[0],configuration.arguments[0][0] );
 }
-// Print the pixel with the minimum R, G, or B value
-if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
-  /* first_pixel() function is defined in feature.h and implemented in feature.c */
-  min_component(configuration.filenames[0],configuration.arguments[0][0] );
+
+
+if ( strncmp( configuration.command, "color_gray", 10 ) == 0 ) {
+ //
+  color_gray(configuration.filenames[0]);
 }
 
-if ( strncmp( configuration.command, "color_grey", 10 ) == 0 ) {
+if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
  //
-  color_grey(configuration.filenames[0]);
+  color_gray_luminance(configuration.filenames[0]);
 }
 
 
