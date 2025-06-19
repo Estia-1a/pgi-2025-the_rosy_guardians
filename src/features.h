@@ -11,7 +11,6 @@ void print_pixel (char *source_path, const unsigned int x,  const unsigned int y
 void color_blue (char *source_path);
 void color_green (char *source_path);
 void max_component (char *source_path, char c);
-void min_component (char *source_path, char c);
 void color_red (char *source_path);
 void invert_color (char *source_path);
 
