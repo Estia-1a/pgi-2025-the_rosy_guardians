@@ -248,3 +248,36 @@ void color_grey (char *source_path){
     }
 
 }
+
+void max_pixel (char *source_path) {
+	
+    int Max, x, y,somme;
+    somme = 0;
+    Max = 0;
+    int R = 0;
+    int G = 0;
+    int B = 0;
+    int width, height, channel_count; 
+    unsigned char *data;
+    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
+    if (result==1) {
+        
+        for (int i=0 ; i < height ; i++){
+            for (int j=0; j < (width); j ++){
+                somme = data[i*channel_count*width+j*channel_count] + data[i*channel_count*width+j*channel_count+1] + data[i*channel_count*width+j*channel_count+2];
+                if (Max < somme){
+                Max = somme;
+                R = data[i*channel_count*width+j*channel_count];
+                G = data[i*channel_count*width+j*channel_count+1];
+                B = data[i*channel_count*width+j*channel_count+2];
+                x = j;
+                y = i;
+                }	
+            }		
+        }
+        printf("max_pixel (%d, %d): %d, %d, %d", x, y, R, G, B);
+        }
+    else {
+        printf("error");
+    } 
+}
