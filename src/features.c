@@ -184,43 +184,7 @@ void max_component (char *source_path, char c) {
                 }	
             }		
         }
-        printf ("(%i, %i) : %i",x,y,M);
-        }
-    else {
-        printf("error");
-    } 
-}
-
-void min_component (char *source_path, char c) {
-	
-    int M, x, y, start;
-    M = 0;
-    int width, height, channel_count; 
-    unsigned char *data;
-    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
-    if (result==1) {
-
-        if (c == 'R'){
-            start = 0;}
-        else if (c== 'G'){
-            start = 1;}
-        else if (c == 'B'){
-            start = 2;}
-        else {
-        printf("error");
-    } 
-            
-        for (int i=0 ; i < height ; i++){
-            for (int j=0; j < (width); j ++){
-                
-                if (M > data[i*channel_count*width+j*channel_count+start]){
-                M = data[i*channel_count*width+j*channel_count+start];
-                x = j;
-                y = i;
-                }	
-            }		
-        }
-        printf ("(%i, %i) : %i",x,y,M);
+        printf("max_component %c (%d, %d): %d", c, x, y, M);
         }
     else {
         printf("error");
