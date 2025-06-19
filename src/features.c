@@ -164,11 +164,11 @@ void max_component (char *source_path, char c) {
     int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
     if (result==1) {
 
-        if (c == 'R'){
+        if (c == 'R'||'r'){
             start = 0;}
-        else if (c== 'G'){
+        else if (c== 'G'||'g'){
             start = 1;}
-        else if (c == 'B'){
+        else if (c == 'B'||'b'){
             start = 2;}
         else {
         printf("error");
@@ -190,6 +190,42 @@ void max_component (char *source_path, char c) {
         printf("error");
     } 
 }
+void min_component (char *source_path, char c) {
+	
+    int Min, x, y, start;
+    Min = 255;
+    int width, height, channel_count; 
+    unsigned char *data;
+    int result = read_image_data(source_path, &data, &width, &height, &channel_count);   
+    if (result==1) {
+
+        if (c == 'R'||'r'){
+            start = 0;}
+        else if (c== 'G'||'g'){
+            start = 1;}
+        else if (c == 'B'||'b'){
+            start = 2;}
+        else {
+        printf("error");
+    } 
+            
+        for (int i=0 ; i < height ; i++){
+            for (int j=0; j < (width); j ++){
+                
+                if (Min > data[i*channel_count*width+j*channel_count+start]){
+                Min = data[i*channel_count*width+j*channel_count+start];
+                x = j;
+                y = i;
+                }	
+            }		
+        }
+        printf("min_component %c (%d, %d): %d", c, x, y, Min);
+        }
+    else {
+        printf("error");
+    } 
+}
+
 
 void color_gray (char *source_path){
     int width, height, channel_count;
